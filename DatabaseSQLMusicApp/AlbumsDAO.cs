@@ -199,5 +199,18 @@ namespace DatabaseSQLMusicApp
             connection.Close();
             return returnThese;
         }
+        internal int DeleteAlbums(int album)
+        {
+
+
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            MySqlCommand sqlCommand = new MySqlCommand("DELETE FROM album WHERE ID=@ID", connection);
+            sqlCommand.Parameters.AddWithValue("@ID", album);
+            int newRows = sqlCommand.ExecuteNonQuery();
+            connection.Close();
+            return newRows;
+        }
     }
 }

@@ -93,6 +93,18 @@ namespace DatabaseSQLMusicApp
             int result = albumsDAO.InsertAlbums(album);
             MessageBox.Show(result + " new row(s) inserted");
         }
+
+        private void BtnAlbum_delete_Click(object sender, EventArgs e)
+        {
+            AlbumsDAO albumsDAO = new AlbumsDAO();
+
+            int rowClicked = dataGridView1.CurrentRow.Index;
+
+            int rowsindex = int.Parse(dataGridView1.Rows[rowClicked].Cells[0].Value.ToString());
+
+            MessageBox.Show("You have deleted album: "+rowsindex.ToString());
+            albumsDAO.DeleteAlbums(rowsindex);
+        }
     }
     }
 

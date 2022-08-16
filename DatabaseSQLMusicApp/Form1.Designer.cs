@@ -47,6 +47,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnAlbum_delete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -225,11 +226,22 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "Tracks";
             // 
+            // btnAlbum_delete
+            // 
+            this.btnAlbum_delete.Location = new System.Drawing.Point(1011, 52);
+            this.btnAlbum_delete.Name = "btnAlbum_delete";
+            this.btnAlbum_delete.Size = new System.Drawing.Size(137, 23);
+            this.btnAlbum_delete.TabIndex = 8;
+            this.btnAlbum_delete.Text = "Delete Selected Album";
+            this.btnAlbum_delete.UseVisualStyleBackColor = true;
+            this.btnAlbum_delete.Click += new System.EventHandler(this.BtnAlbum_delete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 450);
+            this.Controls.Add(this.btnAlbum_delete);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.groupBox1);
@@ -271,6 +283,7 @@
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnAlbum_delete;
     }
 }
 

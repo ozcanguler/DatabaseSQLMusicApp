@@ -228,11 +228,11 @@
             // 
             // btnAlbum_delete
             // 
-            this.btnAlbum_delete.Location = new System.Drawing.Point(1011, 52);
+            this.btnAlbum_delete.Location = new System.Drawing.Point(244, 453);
             this.btnAlbum_delete.Name = "btnAlbum_delete";
-            this.btnAlbum_delete.Size = new System.Drawing.Size(137, 23);
+            this.btnAlbum_delete.Size = new System.Drawing.Size(92, 23);
             this.btnAlbum_delete.TabIndex = 8;
-            this.btnAlbum_delete.Text = "Delete Selected Album";
+            this.btnAlbum_delete.Text = "Delete Selected";
             this.btnAlbum_delete.UseVisualStyleBackColor = true;
             this.btnAlbum_delete.Click += new System.EventHandler(this.BtnAlbum_delete_Click);
             // 
@@ -240,7 +240,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1300, 450);
+            this.ClientSize = new System.Drawing.Size(1300, 480);
             this.Controls.Add(this.btnAlbum_delete);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dataGridView2);

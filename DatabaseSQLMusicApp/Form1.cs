@@ -17,6 +17,7 @@ namespace DatabaseSQLMusicApp
         BindingSource albumBindingSource = new BindingSource();     //bindingsource ability connect a list of items
 
         BindingSource trackBindingSource = new BindingSource();
+        List<Album> albums = new List<Album>();
         public Form1()
         {
             InitializeComponent();
@@ -48,10 +49,14 @@ namespace DatabaseSQLMusicApp
 
             //albumBindingSource.DataSource = albumsDao.albums;
             //dataGridView1.DataSource = albumBindingSource;
-
+           
 
             AlbumsDAO albumsDAO = new AlbumsDAO();
-            albumBindingSource.DataSource = albumsDAO.GetAllAlbums();
+
+            albums = albumsDAO.GetAllAlbums();
+
+            //albumBindingSource.DataSource = albumsDAO.GetAllAlbums();
+            albumBindingSource.DataSource = albums;
             dataGridView1.DataSource = albumBindingSource;
         }
 
@@ -73,9 +78,10 @@ namespace DatabaseSQLMusicApp
 
             pictureBox1.Load(imageURL);
 
-            AlbumsDAO albumsDAO = new AlbumsDAO();
+            //AlbumsDAO albumsDAO = new AlbumsDAO();
             //trackBindingSource.DataSource = albumsDAO.GetTracksForAlbum((int)dataGridView.Rows[rowClicked].Cells[0].Value);  where
-            trackBindingSource.DataSource = albumsDAO.GetTracksUsingJoin((int)dataGridView.Rows[rowClicked].Cells[0].Value);
+            //trackBindingSource.DataSource = albumsDAO.GetTracksUsingJoin((int)dataGridView.Rows[rowClicked].Cells[0].Value);
+            trackBindingSource.DataSource = albums[rowClicked].Tracks;
             dataGridView2.DataSource = trackBindingSource;
         }
 
@@ -96,14 +102,23 @@ namespace DatabaseSQLMusicApp
 
         private void BtnAlbum_delete_Click(object sender, EventArgs e)
         {
+
+            int rowClicked1 = dataGridView1.CurrentRow.Index;
+
+            int rowClicked = dataGridView2.CurrentRow.Index;
+
+            int trackId = (int)dataGridView2.Rows[rowClicked].Cells[0].Value;
+
             AlbumsDAO albumsDAO = new AlbumsDAO();
+          int result = albumsDAO.DeleteTrack(trackId);
 
-            int rowClicked = dataGridView1.CurrentRow.Index;
+            MessageBox.Show("You have deleted album: "+result);
 
-            int rowsindex = int.Parse(dataGridView1.Rows[rowClicked].Cells[0].Value.ToString());
 
-            MessageBox.Show("You have deleted album: "+rowsindex.ToString());
-            albumsDAO.DeleteAlbums(rowsindex);
+            //dataGridView2.DataSource = null;
+            albums = albumsDAO.GetAllAlbums();
+            trackBindingSource.DataSource = albums[rowClicked1].Tracks;
+            dataGridView2.DataSource = trackBindingSource;
         }
     }
     }

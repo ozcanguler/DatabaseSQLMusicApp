@@ -40,6 +40,8 @@ namespace DatabaseSQLMusicApp
                         Description = reader.GetString(5)
 
                     };
+                    a.Tracks = GetTracksForAlbum(a.ID);
+
                     returnThese.Add(a);
                 }
             }
@@ -199,18 +201,18 @@ namespace DatabaseSQLMusicApp
             connection.Close();
             return returnThese;
         }
-        internal int DeleteAlbums(int album)
+        internal int DeleteTrack(int trackId)
         {
 
 
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
 
-            MySqlCommand sqlCommand = new MySqlCommand("DELETE FROM album WHERE ID=@ID", connection);
-            sqlCommand.Parameters.AddWithValue("@ID", album);
-            int newRows = sqlCommand.ExecuteNonQuery();
+            MySqlCommand sqlCommand = new MySqlCommand("DELETE FROM tracks WHERE ID=@ID", connection);
+            sqlCommand.Parameters.AddWithValue("@ID", trackId);
+            int result = sqlCommand.ExecuteNonQuery();
             connection.Close();
-            return newRows;
+            return result;
         }
     }
 }
